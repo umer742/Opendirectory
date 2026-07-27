@@ -1,0 +1,2341 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Freebee - a free tools and resources directory">
+<title>Freebee Directory</title>
+
+<!-- ============================================================
+     GOOGLE ADSENSE
+     Sign up at https://adsense.google.com, get your publisher ID
+     (looks like "ca-pub-1234567890123456"), and replace BOTH:
+     1. YOUR_ADSENSE_PUBLISHER_ID in the script src below
+     2. YOUR_ADSENSE_PUBLISHER_ID in the <ins> ad slot further down
+     Until you do, this script simply won't load any ads.
+     ============================================================ -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=YOUR_ADSENSE_PUBLISHER_ID" crossorigin="anonymous"></script>
+
+<style>
+:root {
+  --bg: #eef4fc;
+  --card: #ffffff;
+  --text: #16273f;
+  --muted: #5f7690;
+  --border: #d7e3f2;
+  --primary: #2f6fed;
+  --primary-dark: #2456c2;
+  --secondary: #e6eefc;
+  --danger: #e34d59;
+  --shadow: 0 12px 35px rgba(20, 55, 110, .08);
+}
+
+[data-theme="dark"] {
+  --bg: #0a1524;
+  --card: #101e32;
+  --text: #eaf1fb;
+  --muted: #90a5c2;
+  --border: #223451;
+  --primary: #5b9bff;
+  --primary-dark: #3f7fe0;
+  --secondary: #16263f;
+  --shadow: 0 12px 35px rgba(0, 5, 20, .35);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  color: var(--text);
+  background: var(--bg);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  border-bottom: 1px solid var(--border);
+  background: color-mix(in srgb, var(--card) 92%, transparent);
+  backdrop-filter: blur(15px);
+}
+
+.nav {
+  max-width: 1200px;
+  min-height: 52px;
+  margin: auto;
+  padding: 8px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  font-size: 19px;
+  font-weight: 800;
+}
+
+.logo-mark {
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  color: white;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--primary), #38bdf8);
+  font-size: 15px;
+}
+
+.nav-select {
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text);
+  background: var(--card);
+  font-weight: bold;
+}
+
+.nav-select:hover {
+  border-color: var(--primary);
+}
+
+.menu-wrap {
+  position: relative;
+}
+
+.menu-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--card);
+}
+
+.menu-toggle span {
+  width: 18px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--text);
+}
+
+.menu-toggle:hover {
+  border-color: var(--primary);
+}
+
+.nav-actions {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 220px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--card);
+  box-shadow: var(--shadow);
+}
+
+.nav-actions[hidden] {
+  display: none;
+}
+
+.nav-actions .btn,
+.nav-actions .nav-select {
+  width: 100%;
+  text-align: left;
+}
+
+main {
+  max-width: 1200px;
+  margin: auto;
+  padding: 30px 20px 60px;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.5fr .8fr;
+  gap: 20px;
+  margin-bottom: 22px;
+}
+
+.hero-content,
+.hero-info {
+  padding: 30px;
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  background: var(--card);
+  box-shadow: var(--shadow);
+}
+
+.hero-content {
+  background:
+    radial-gradient(circle at top right, rgba(56, 189, 248, .22), transparent 35%),
+    var(--card);
+}
+
+.eyebrow {
+  color: var(--primary);
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 10px 0;
+  font-size: clamp(36px, 6vw, 68px);
+  line-height: .98;
+  letter-spacing: -3px;
+}
+
+h2,
+h3 {
+  margin-top: 0;
+}
+
+.hero p {
+  max-width: 720px;
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+.hero-info ul {
+  padding-left: 20px;
+  color: var(--muted);
+  line-height: 1.9;
+}
+
+.btn {
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text);
+  background: var(--card);
+  transition: .2s;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  border-color: var(--primary);
+}
+
+.btn-primary {
+  color: white;
+  border-color: transparent;
+  background: linear-gradient(135deg, var(--primary), #38bdf8);
+}
+
+.toolbar {
+  position: sticky;
+  top: 54px;
+  z-index: 10;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-bottom: 15px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  background: var(--card);
+  box-shadow: var(--shadow);
+}
+
+.search {
+  flex: 1 1 280px;
+  padding: 11px 13px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  outline: none;
+  color: var(--text);
+  background: var(--secondary);
+}
+
+.search:focus {
+  border-color: var(--primary);
+}
+
+select {
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text);
+  background: var(--secondary);
+}
+
+.categories {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 4px 0 16px;
+}
+
+.category {
+  white-space: nowrap;
+  padding: 8px 13px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--muted);
+  background: var(--card);
+}
+
+.category.active,
+.category:hover {
+  color: white;
+  border-color: transparent;
+  background: linear-gradient(135deg, var(--primary), #38bdf8);
+}
+
+.status {
+  margin: 10px 0 18px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));
+  gap: 16px;
+}
+
+.card {
+  display: flex;
+  min-height: 245px;
+  flex-direction: column;
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: 17px;
+  background: var(--card);
+  box-shadow: var(--shadow);
+  transition: .2s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: var(--primary);
+}
+
+.card-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.card-name-link {
+  display: block;
+  flex: 1;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.card-name-link:hover h2 {
+  color: var(--primary);
+  text-decoration: underline;
+}
+
+.card h2 {
+  margin: 0 0 2px;
+  overflow: hidden;
+  font-size: 15px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.card-url {
+  display: block;
+  overflow: hidden;
+  color: var(--muted);
+  font-size: 11px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.favorite {
+  padding: 0;
+  border: 0;
+  color: var(--muted);
+  background: transparent;
+  font-size: 23px;
+}
+
+.favorite.active {
+  color: #f0b323;
+}
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 12px 0;
+}
+
+.badge {
+  padding: 5px 8px;
+  border-radius: 999px;
+  color: var(--primary);
+  background: var(--secondary);
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.description {
+  flex: 1;
+  margin: 0 0 13px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.tags {
+  margin-bottom: 14px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.card-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.visit {
+  flex: 1;
+  padding: 10px;
+  border-radius: 9px;
+  color: white;
+  background: linear-gradient(135deg, var(--primary), #38bdf8);
+  text-align: center;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.copy {
+  padding: 8px 11px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  color: var(--text);
+  background: var(--secondary);
+}
+
+.empty {
+  grid-column: 1 / -1;
+  padding: 45px 20px;
+  border: 1px dashed var(--border);
+  border-radius: 15px;
+  color: var(--muted);
+  text-align: center;
+}
+
+.marquee-wrap {
+  overflow: hidden;
+  margin: 0 0 20px;
+  padding: 16px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  gap: 60px;
+  animation: marquee-scroll 22s linear infinite;
+}
+
+.marquee-track span {
+  color: var(--muted);
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  opacity: .75;
+}
+
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 12px 0;
+  font-size: 13px;
+}
+
+.footer-links a {
+  color: var(--muted);
+  text-decoration: underline;
+}
+
+.footer-links a:hover {
+  color: var(--primary);
+}
+
+.static-page {
+  margin-bottom: 24px;
+  padding: 26px 28px;
+  border: 1px solid var(--border);
+  border-radius: 17px;
+  background: var(--card);
+  box-shadow: var(--shadow);
+}
+
+.static-page #staticPageContent {
+  margin-top: 16px;
+  max-width: 760px;
+  color: var(--text);
+  line-height: 1.7;
+}
+
+.static-page #staticPageContent h1 {
+  margin-top: 0;
+  font-size: 30px;
+  letter-spacing: -1px;
+}
+
+.static-page #staticPageContent h2 {
+  margin: 26px 0 8px;
+  font-size: 18px;
+}
+
+.static-page #staticPageContent p,
+.static-page #staticPageContent li {
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.static-page #staticPageContent .updated {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.resource-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+  margin-top: 16px;
+}
+
+.resource-header h1 {
+  flex: 1;
+  min-width: 200px;
+  margin: 0;
+  font-size: 26px;
+  letter-spacing: -1px;
+}
+
+.resource-header .card-url {
+  font-size: 13px;
+}
+
+.resource-description {
+  margin: 16px 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.notes-section {
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+
+.notes-section h2 {
+  margin-bottom: 4px;
+  font-size: 18px;
+}
+
+.notes-section .hint {
+  margin: 0 0 16px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.note-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 22px;
+}
+
+.note-form textarea {
+  min-height: 80px;
+  padding: 11px 13px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text);
+  background: var(--secondary);
+  resize: vertical;
+}
+
+.note-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.note-item {
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--secondary);
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.55;
+  white-space: pre-wrap;
+}
+
+.note-item .note-meta {
+  display: block;
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.note-empty {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.form-hint {
+  margin: -6px 0 14px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.optional-tag {
+  color: var(--muted);
+  font-weight: normal;
+  font-size: 12px;
+}
+
+.agree-label {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: flex-start;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: normal;
+}
+
+.agree-label input {
+  width: auto !important;
+  margin-top: 3px;
+}
+
+.agree-label a {
+  color: var(--primary);
+  text-decoration: underline;
+}
+
+.footer-brand {
+  text-align: center;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.footer-brand strong {
+  color: var(--text);
+}
+
+.ad-slot {
+  margin-bottom: 22px;
+  min-height: 2px;
+  text-align: center;
+}
+
+.category-tiles {
+  margin-bottom: 22px;
+}
+
+.category-tiles h2 {
+  margin-bottom: 12px;
+  font-size: 20px;
+}
+
+.tile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 10px;
+}
+
+.tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 16px 12px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  color: var(--text);
+  background: var(--card);
+  box-shadow: var(--shadow);
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 13px;
+  text-align: center;
+  transition: .2s;
+}
+
+.tile:hover {
+  transform: translateY(-4px);
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.tile:hover .tile-emoji {
+  filter: url(#pencilSketch) grayscale(0) opacity(1);
+}
+
+.tile-emoji {
+  font-size: 17px;
+  filter: url(#pencilSketch) grayscale(0.85) opacity(.8);
+  transition: filter .2s;
+}
+
+.category-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
+  padding: 18px 20px;
+  border: 1px solid var(--border);
+  border-radius: 17px;
+  background: var(--card);
+  box-shadow: var(--shadow);
+}
+
+.category-header h1 {
+  flex: 1;
+  margin: 0;
+  font-size: 26px;
+  letter-spacing: -1px;
+}
+
+footer {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 20px 35px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+dialog {
+  width: min(540px, calc(100% - 30px));
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 17px;
+  color: var(--text);
+  background: var(--card);
+  box-shadow: 0 25px 80px rgba(0, 0, 0, .35);
+}
+
+dialog::backdrop {
+  background: rgba(0, 0, 0, .65);
+}
+
+.modal {
+  padding: 23px;
+}
+
+.form-grid {
+  display: grid;
+  gap: 13px;
+}
+
+label {
+  display: grid;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: bold;
+}
+
+label input,
+label textarea,
+label select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  color: var(--text);
+  background: var(--secondary);
+}
+
+textarea {
+  min-height: 85px;
+  resize: vertical;
+}
+
+#captchaBox {
+  margin-top: 4px;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+@media (max-width: 800px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-content,
+  .hero-info {
+    padding: 24px;
+  }
+
+  .toolbar {
+    top: 52px;
+  }
+}
+
+@media print {
+  .header,
+  .hero,
+  .toolbar,
+  .categories,
+  .marquee-wrap,
+  footer,
+  .favorite,
+  .copy {
+    display: none !important;
+  }
+
+  body {
+    background: white;
+    color: #111;
+  }
+
+  main {
+    padding: 0;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .card {
+    min-height: 180px;
+    break-inside: avoid;
+    border-color: #aaa;
+    box-shadow: none;
+  }
+
+  .visit {
+    padding: 0;
+    color: #111;
+    background: none;
+    text-align: left;
+  }
+
+  .visit::after {
+    content: " - " attr(href);
+  }
+}
+</style>
+</head>
+
+<body>
+
+<svg width="0" height="0" style="position:absolute">
+  <filter id="pencilSketch" x="-20%" y="-20%" width="140%" height="140%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="7" result="noise"/>
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="2.2" xChannelSelector="R" yChannelSelector="G"/>
+    <feColorMatrix type="saturate" values="0.15"/>
+  </filter>
+</svg>
+
+<header class="header">
+  <nav class="nav">
+    <a class="logo" href="#">
+      <span class="logo-mark">✦</span>
+      <span>Freebee</span>
+    </a>
+
+    <div class="menu-wrap">
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <div class="nav-actions" id="navMenu" hidden>
+        <select id="headerCategoryNav" class="nav-select" aria-label="Jump to category">
+          <option value="">Browse category…</option>
+        </select>
+        <button class="btn" id="themeButton">☾ Theme</button>
+        <button class="btn" id="addButton">＋ Add resource</button>
+        <button class="btn" id="printButton">▣ Print</button>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="hero-content">
+      <div class="eyebrow">Independent resource directory</div>
+      <h1>Useful websites.<br>One clean place.</h1>
+      <p>
+        Discover free and free-tier tools for learning, programming, design,
+        privacy, research, media and everyday work.
+      </p>
+      <button class="btn btn-primary" id="heroAddButton">
+        Add your own resource
+      </button>
+    </div>
+
+    <aside class="hero-info">
+      <h3>Features</h3>
+      <ul>
+        <li>Searchable resource directory</li>
+        <li>Categories and sorting</li>
+        <li>Add resources — saved in your browser only</li>
+        <li>Favorites saved in your browser only</li>
+        <li>Dark mode</li>
+        <li>Import and export JSON</li>
+      </ul>
+    </aside>
+  </section>
+
+  <div class="ad-slot">
+    <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="YOUR_ADSENSE_PUBLISHER_ID"
+      data-ad-slot="YOUR_AD_SLOT_ID"
+      data-ad-format="auto"
+      data-full-width-responsive="true"></ins>
+  </div>
+
+  <section id="categoryTiles" class="category-tiles">
+    <h2>Browse by category</h2>
+    <div class="tile-grid">
+      <a class="tile" href="#/category/Jobs"><span class="tile-emoji">🧑‍💼</span>Jobs</a>
+      <a class="tile" href="#/category/News"><span class="tile-emoji">📰</span>News</a>
+      <a class="tile" href="#/category/Finance"><span class="tile-emoji">💰</span>Finance</a>
+      <a class="tile" href="#/category/Health"><span class="tile-emoji">🩺</span>Health</a>
+      <a class="tile" href="#/category/Productivity"><span class="tile-emoji">⚙️</span>Productivity</a>
+      <a class="tile" href="#/category/Travel"><span class="tile-emoji">✈️</span>Travel</a>
+      <a class="tile" href="#/category/Movies"><span class="tile-emoji">🎬</span>Movies</a>
+      <a class="tile" href="#/category/Anime"><span class="tile-emoji">🎌</span>Anime</a>
+      <a class="tile" href="#/category/Books"><span class="tile-emoji">📚</span>Books</a>
+      <a class="tile" href="#/category/TV%20Shows"><span class="tile-emoji">📺</span>TV Shows</a>
+      <a class="tile" href="#/category/Music"><span class="tile-emoji">🎵</span>Music</a>
+    </div>
+  </section>
+
+  <section id="categoryHeader" class="category-header" hidden>
+    <a class="btn" href="#/">← All categories</a>
+    <h1 id="categoryHeaderTitle"></h1>
+    <button class="btn btn-primary" id="categoryAddButton">+ Add a site to this category</button>
+  </section>
+
+  <section id="staticPage" class="static-page" hidden>
+    <a class="btn" href="#/">← Back to directory</a>
+    <div id="staticPageContent"></div>
+  </section>
+
+  <section id="resourcePage" class="static-page" hidden>
+    <a class="btn" href="#/">← Back to directory</a>
+    <div id="resourcePageContent"></div>
+  </section>
+
+  <section class="toolbar">
+    <input
+      id="search"
+      class="search"
+      type="search"
+      placeholder="Search websites, categories or tags..."
+    >
+
+    <select id="sort">
+      <option value="name">Sort: A–Z</option>
+      <option value="category">Sort: Category</option>
+      <option value="newest">Sort: Newest</option>
+    </select>
+
+    <button class="btn" id="favoritesButton">☆ Favorites</button>
+    <button class="btn" id="exportButton">Export JSON</button>
+
+    <label class="btn">
+      Import JSON
+      <input id="importInput" type="file" accept=".json" hidden>
+    </label>
+  </section>
+
+  <nav id="categories" class="categories"></nav>
+  <div id="status" class="status"></div>
+  <section id="resourceGrid" class="grid"></section>
+</main>
+
+<div class="marquee-wrap" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Skillbridge</span>
+    <span>Metamorphoses</span>
+    <span>MediHomeoAI</span>
+    <span>Vinland</span>
+    <span>Skillbridge</span>
+    <span>Metamorphoses</span>
+    <span>MediHomeoAI</span>
+    <span>Vinland</span>
+  </div>
+</div>
+
+<footer>
+  Freebee is an original directory template. Review each website's terms,
+  privacy policy and licensing before using it.
+
+  <div class="footer-links">
+    <a href="#/privacy">Privacy Policy</a>
+    <span aria-hidden="true">&middot;</span>
+    <a href="#/terms">Terms &amp; Conditions</a>
+  </div>
+
+  <div class="footer-brand">
+    <strong>Vinland</strong> &middot; &copy; <span id="footerYear"></span>
+  </div>
+</footer>
+
+<dialog id="resourceDialog">
+  <form id="resourceForm" class="modal">
+    <h2>Add a resource</h2>
+    <p class="form-hint">
+      Just paste the link — we'll pull the website's name automatically.
+    </p>
+
+    <div class="form-grid">
+      <label>
+        Website URL
+        <input name="url" required type="url" placeholder="https://example.com" autofocus>
+      </label>
+
+      <label>
+        Category
+        <select name="category">
+          <option>Tools</option>
+          <option>Learning</option>
+          <option>Programming</option>
+          <option>Jobs</option>
+          <option>News</option>
+          <option>Finance</option>
+          <option>Health</option>
+          <option>Productivity</option>
+          <option>Travel</option>
+          <option>Books</option>
+          <option>Movies</option>
+          <option>Anime</option>
+          <option>TV Shows</option>
+          <option>Music</option>
+          <option>Creative</option>
+          <option>AI</option>
+          <option>Privacy and safety</option>
+          <option>Security education</option>
+          <option>Math</option>
+          <option>Language</option>
+          <option>Media</option>
+          <option>Other</option>
+        </select>
+      </label>
+
+      <label>
+        Tags <span class="optional-tag">(optional)</span>
+        <input name="tags" maxlength="150"
+          placeholder="free, education, open source">
+      </label>
+
+      <!-- Honeypot: invisible to humans, most simple bots fill every field -->
+      <label style="position:absolute; left:-9999px; top:-9999px;" aria-hidden="true">
+        Leave this field empty
+        <input name="website" tabindex="-1" autocomplete="off">
+      </label>
+
+      <div id="captchaBox" hidden></div>
+
+      <label class="agree-label">
+        <input type="checkbox" name="agreeTerms" required>
+        I agree to the <a href="#/terms" target="_blank" rel="noopener">Terms &amp; Conditions</a>
+        and <a href="#/privacy" target="_blank" rel="noopener">Privacy Policy</a>.
+      </label>
+    </div>
+
+    <div class="modal-actions">
+      <button type="button" class="btn" id="cancelButton">Cancel</button>
+      <button type="submit" class="btn btn-primary">Add resource</button>
+    </div>
+  </form>
+</dialog>
+
+<script src="https://www.google.com/recaptcha/api.js?onload=onRecaptchaLoad&render=explicit" async defer></script>
+<script>
+/* ============================================================
+   NO SERVER, NO BACKEND to run yourself — fully static.
+
+   "Add resource" and "How to use this website" notes are saved with
+   localStorage, which lives only in the browser of the person who
+   added them. Nobody else will see them, and nothing here ever
+   phones home to a database you'd have to maintain.
+
+   To make a link visible to EVERY visitor, add it directly to the
+   `defaultResources` array below, then re-upload/redeploy this file.
+
+   reCAPTCHA and AdSense below ARE fine to use — you connect them
+   once in each service's own dashboard and they keep running on
+   their own. Nothing to host, nothing to check on.
+   ============================================================ */
+
+/* Create a free reCAPTCHA v2 ("I'm not a robot" checkbox) site key at
+   https://www.google.com/recaptcha/admin — register your domain, then
+   paste the site key below. Leave as-is to keep captcha disabled. */
+const RECAPTCHA_SITE_KEY = "YOUR_RECAPTCHA_SITE_KEY";
+const captchaEnabled = RECAPTCHA_SITE_KEY !== "YOUR_RECAPTCHA_SITE_KEY" && RECAPTCHA_SITE_KEY.length > 10;
+
+let captchaWidgetId = null;
+
+window.onRecaptchaLoad = function () {
+  if (!captchaEnabled) return;
+
+  captchaWidgetId = grecaptcha.render("captchaBox", {
+    sitekey: RECAPTCHA_SITE_KEY
+  });
+};
+
+if (!captchaEnabled) {
+  document.addEventListener("DOMContentLoaded", () => {
+    const box = document.getElementById("captchaBox");
+    if (box) box.hidden = true;
+  });
+} else {
+  document.addEventListener("DOMContentLoaded", () => {
+    const box = document.getElementById("captchaBox");
+    if (box) box.hidden = false;
+  });
+}
+
+const defaultResources = [
+  {
+    name: "TinyWow",
+    url: "https://tinywow.com/",
+    category: "Tools",
+    subcategory: "Files",
+    description: "Browser tools for PDFs, documents, images and file conversion.",
+    tags: "pdf, documents, files"
+  },
+  {
+    name: "VirusTotal",
+    url: "https://www.virustotal.com/",
+    category: "Privacy and safety",
+    subcategory: "Security checks",
+    description: "Check files, URLs, domains and IP addresses with multiple scanners.",
+    tags: "malware, url scanner, security"
+  },
+  {
+    name: "StopNCII.org",
+    url: "https://stopncii.org/",
+    category: "Privacy and safety",
+    subcategory: "Safety",
+    description: "Support and resources for adults dealing with intimate images shared without consent.",
+    tags: "privacy, safety, image protection"
+  },
+  {
+    name: "iFixit",
+    url: "https://www.ifixit.com/",
+    category: "Tools",
+    subcategory: "Repair",
+    description: "Repair guides and teardown information for electronics and devices.",
+    tags: "repair, guides, electronics"
+  },
+  {
+    name: "Axiom",
+    url: "https://axiom.ai/",
+    category: "Tools",
+    subcategory: "Automation",
+    description: "No-code browser automation for legitimate repetitive workflows.",
+    tags: "automation, browser, no-code"
+  },
+  {
+    name: "SciSpace",
+    url: "https://www.scispace.com/",
+    category: "Learning",
+    subcategory: "Research",
+    description: "Tools for reading, understanding and organizing academic papers.",
+    tags: "research, papers, study"
+  },
+  {
+    name: "Wiseone",
+    url: "https://wiseone.io/",
+    category: "Learning",
+    subcategory: "Reading",
+    description: "Reading assistance for understanding online articles.",
+    tags: "reading, knowledge, browser"
+  },
+  {
+    name: "Uizard",
+    url: "https://uizard.io/",
+    category: "Creative",
+    subcategory: "UI design",
+    description: "Interface design and prototyping tools for websites and applications.",
+    tags: "design, ui, prototype"
+  },
+  {
+    name: "Photopea",
+    url: "https://www.photopea.com/",
+    category: "Creative",
+    subcategory: "Image editing",
+    description: "Powerful browser-based image editor supporting many file formats.",
+    tags: "images, design, editor"
+  },
+  {
+    name: "GIMP",
+    url: "https://www.gimp.org/",
+    category: "Creative",
+    subcategory: "Image editing",
+    description: "Free and open-source image editing software.",
+    tags: "open source, photos, graphics"
+  },
+  {
+    name: "Krita",
+    url: "https://krita.org/",
+    category: "Creative",
+    subcategory: "Digital art",
+    description: "Free and open-source painting application for artists and illustrators.",
+    tags: "drawing, art, open source"
+  },
+  {
+    name: "Blender",
+    url: "https://www.blender.org/",
+    category: "Creative",
+    subcategory: "3D",
+    description: "Open-source 3D creation suite for modeling, animation and rendering.",
+    tags: "3d, animation, modeling"
+  },
+  {
+    name: "OBS Studio",
+    url: "https://obsproject.com/",
+    category: "Creative",
+    subcategory: "Streaming",
+    description: "Free and open-source recording and live-streaming application.",
+    tags: "streaming, recording, video"
+  },
+  {
+    name: "Audacity",
+    url: "https://www.audacityteam.org/",
+    category: "Creative",
+    subcategory: "Audio",
+    description: "Free and open-source audio recording and editing software.",
+    tags: "audio, recording, editing"
+  },
+  {
+    name: "LibreOffice",
+    url: "https://www.libreoffice.org/",
+    category: "Tools",
+    subcategory: "Office",
+    description: "Free office suite for documents, presentations and spreadsheets.",
+    tags: "office, documents, open source"
+  },
+  {
+    name: "7-Zip",
+    url: "https://www.7-zip.org/",
+    category: "Tools",
+    subcategory: "File utilities",
+    description: "Open-source file archiving and compression utility.",
+    tags: "zip, archive, compression"
+  },
+  {
+    name: "MDN Web Docs",
+    url: "https://developer.mozilla.org/",
+    category: "Programming",
+    subcategory: "Documentation",
+    description: "Documentation and learning resources for HTML, CSS and JavaScript.",
+    tags: "html, css, javascript, web"
+  },
+  {
+    name: "freeCodeCamp",
+    url: "https://www.freecodecamp.org/",
+    category: "Programming",
+    subcategory: "Courses",
+    description: "Free programming courses, projects and certifications.",
+    tags: "coding, courses, web development"
+  },
+  {
+    name: "The Odin Project",
+    url: "https://www.theodinproject.com/",
+    category: "Programming",
+    subcategory: "Web development",
+    description: "Free project-based full-stack web development curriculum.",
+    tags: "javascript, web development, coding"
+  },
+  {
+    name: "GitHub",
+    url: "https://github.com/",
+    category: "Programming",
+    subcategory: "Repositories",
+    description: "Code hosting, version control and open-source collaboration.",
+    tags: "git, code, open source"
+  },
+  {
+    name: "Khan Academy",
+    url: "https://www.khanacademy.org/",
+    category: "Learning",
+    subcategory: "Education",
+    description: "Free lessons and practice in mathematics, science and computing.",
+    tags: "education, math, science"
+  },
+  {
+    name: "edX",
+    url: "https://www.edx.org/",
+    category: "Learning",
+    subcategory: "Courses",
+    description: "Online courses from universities and professional institutions.",
+    tags: "courses, university, education"
+  },
+  {
+    name: "MIT OpenCourseWare",
+    url: "https://ocw.mit.edu/",
+    category: "Learning",
+    subcategory: "Open courses",
+    description: "Free course materials from MIT.",
+    tags: "courses, lectures, university"
+  },
+  {
+    name: "OpenStax",
+    url: "https://openstax.org/",
+    category: "Books",
+    subcategory: "Textbooks",
+    description: "Free, openly licensed peer-reviewed textbooks.",
+    tags: "textbooks, education, open access"
+  },
+  {
+    name: "Project Gutenberg",
+    url: "https://www.gutenberg.org/",
+    category: "Books",
+    subcategory: "Public domain",
+    description: "A large collection of public-domain ebooks.",
+    tags: "ebooks, classics, public domain"
+  },
+  {
+    name: "Open Library",
+    url: "https://openlibrary.org/",
+    category: "Books",
+    subcategory: "Library",
+    description: "An open catalog of books with borrowing options for eligible titles.",
+    tags: "books, library, catalog"
+  },
+  {
+    name: "Internet Archive",
+    url: "https://archive.org/",
+    category: "Books",
+    subcategory: "Digital archive",
+    description: "Nonprofit digital library containing books, media and historical websites.",
+    tags: "archive, library, history"
+  },
+  {
+    name: "TryHackMe",
+    url: "https://tryhackme.com/",
+    category: "Security education",
+    subcategory: "Learning labs",
+    description: "Guided cybersecurity lessons and authorized practice labs.",
+    tags: "cybersecurity, labs, learning"
+  },
+  {
+    name: "OWASP",
+    url: "https://owasp.org/",
+    category: "Security education",
+    subcategory: "Secure development",
+    description: "Open community resources for safer software and web development.",
+    tags: "security, web, secure coding"
+  },
+  {
+    name: "PortSwigger Web Security Academy",
+    url: "https://portswigger.net/web-security",
+    category: "Security education",
+    subcategory: "Web security",
+    description: "Free interactive lessons and labs for web application security.",
+    tags: "web security, labs, learning"
+  },
+  {
+    name: "Have I Been Pwned",
+    url: "https://haveibeenpwned.com/",
+    category: "Privacy and safety",
+    subcategory: "Breach alerts",
+    description: "Check whether an email appears in known data breaches. Never enter a password.",
+    tags: "privacy, email, breach"
+  },
+  {
+    name: "Privacy Guides",
+    url: "https://www.privacyguides.org/",
+    category: "Privacy and safety",
+    subcategory: "Privacy advice",
+    description: "Practical privacy and security recommendations.",
+    tags: "privacy, security, guides"
+  },
+  {
+    name: "ChatGPT",
+    url: "https://chatgpt.com/",
+    category: "AI",
+    subcategory: "Assistant",
+    description: "General-purpose AI assistant with a free access option.",
+    tags: "ai, writing, learning"
+  },
+  {
+    name: "Hugging Face",
+    url: "https://huggingface.co/",
+    category: "AI",
+    subcategory: "Machine learning",
+    description: "Community hub for AI models, datasets and demonstrations.",
+    tags: "ai, models, datasets"
+  },
+  {
+    name: "Desmos",
+    url: "https://www.desmos.com/",
+    category: "Math",
+    subcategory: "Graphing",
+    description: "Free online graphing calculator and math tools.",
+    tags: "math, graphing, calculator"
+  },
+  {
+    name: "GeoGebra",
+    url: "https://www.geogebra.org/",
+    category: "Math",
+    subcategory: "Visualization",
+    description: "Interactive tools for geometry, algebra and statistics.",
+    tags: "math, geometry, algebra"
+  },
+  {
+    name: "WolframAlpha",
+    url: "https://www.wolframalpha.com/",
+    category: "Math",
+    subcategory: "Computational search",
+    description: "Computational knowledge engine with a free search tier.",
+    tags: "math, science, computation"
+  },
+  {
+    name: "Duolingo",
+    url: "https://www.duolingo.com/",
+    category: "Language",
+    subcategory: "Lessons",
+    description: "Gamified language lessons with a free plan.",
+    tags: "languages, lessons, practice"
+  },
+  {
+    name: "YouTube",
+    url: "https://www.youtube.com/",
+    category: "Media",
+    subcategory: "Video",
+    description: "Video platform with educational, creative and official content.",
+    tags: "video, education, music"
+  },
+  {
+    name: "Tubi",
+    url: "https://tubitv.com/",
+    category: "Media",
+    subcategory: "Legal streaming",
+    description: "Ad-supported streaming service with availability depending on region.",
+    tags: "movies, television, streaming"
+  },
+  {
+    name: "TheSportsDB",
+    url: "https://www.thesportsdb.com/",
+    category: "Tools",
+    subcategory: "Sports data",
+    description: "Community sports database and API for applications.",
+    tags: "sports, api, data"
+  }
+];
+
+const customKey = "freebee-custom";
+const favoritesKey = "freebee-favorites";
+
+// Custom resources: everything a visitor adds, saved in THEIR browser only.
+let customResources = loadJSON(customKey, []);
+// Favorites are also per-browser -- a personal preference, not directory
+// content.
+let favorites = new Set(loadJSON(favoritesKey, []));
+let selectedCategory = "All";
+let showFavorites = false;
+
+function loadJSON(key, fallback) {
+  try {
+    return JSON.parse(localStorage.getItem(key)) || fallback;
+  } catch {
+    return fallback;
+  }
+}
+
+function saveLocalCache() {
+  localStorage.setItem(customKey, JSON.stringify(customResources));
+  localStorage.setItem(favoritesKey, JSON.stringify([...favorites]));
+}
+
+// Backwards-compatible name used by favorite toggling.
+function saveData() {
+  saveLocalCache();
+}
+
+function addResource(resource) {
+  customResources.push(resource);
+  saveLocalCache();
+  return true;
+}
+
+/* ---- Usage notes ("How to use this website"), per resource ----
+   Saved with localStorage only -- visible just to the browser that
+   added them, same as everything else on this page. */
+
+function localNotesKey(resourceId) {
+  return "freebee-notes-" + resourceId;
+}
+
+function loadLocalNotes(resourceId) {
+  return loadJSON(localNotesKey(resourceId), []);
+}
+
+async function fetchNotes(resourceId) {
+  return loadLocalNotes(resourceId);
+}
+
+async function addNote(resourceId, noteText) {
+  const entry = { note: noteText, createdAt: Date.now() };
+  const notes = loadLocalNotes(resourceId);
+  notes.unshift(entry);
+  localStorage.setItem(localNotesKey(resourceId), JSON.stringify(notes));
+  return true;
+}
+
+/* Auto-fills the website name/description from the link itself, so
+   visitors only have to paste a URL. Uses microlink.io (a free, public,
+   CORS-enabled metadata API — no key needed for normal directory use).
+   Falls back to the domain name if the fetch fails or times out. */
+async function fetchLinkMetadata(url) {
+  const fallbackName = (() => {
+    try {
+      return new URL(url).hostname.replace(/^www\./, "");
+    } catch {
+      return url;
+    }
+  })();
+
+  try {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 6000);
+
+    const response = await fetch(
+      `https://api.microlink.io/?url=${encodeURIComponent(url)}&meta=false`,
+      { signal: controller.signal }
+    );
+    clearTimeout(timeout);
+
+    const payload = await response.json();
+
+    if (payload.status === "success" && payload.data) {
+      return {
+        name: (payload.data.title || fallbackName).slice(0, 80),
+        description: (payload.data.description || "").slice(0, 240)
+      };
+    }
+  } catch (error) {
+    console.warn("Could not auto-fetch site name, using domain instead:", error);
+  }
+
+  return { name: fallbackName, description: "" };
+}
+
+function allResources() {
+  return [...defaultResources, ...customResources];
+}
+
+function resourceId(resource) {
+  return resource.id || resource.name + "|" + resource.url;
+}
+
+function escapeHTML(value) {
+  return String(value || "").replace(/[&<>"']/g, character => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#039;"
+  }[character]));
+}
+
+function displayURL(url) {
+  try {
+    const parsed = new URL(url);
+    return parsed.hostname.replace(/^www\./, "") + parsed.pathname.replace(/\/$/, "");
+  } catch {
+    return url;
+  }
+}
+
+const curatedCategories = [
+  "Jobs", "News", "Finance", "Health", "Productivity", "Travel",
+  "Movies", "Anime", "Books", "TV Shows", "Music"
+];
+
+function renderCategories() {
+  const categories = [
+    "All",
+    ...new Set(allResources().map(item => item.category).sort())
+  ];
+
+  document.getElementById("categories").innerHTML = categories.map(category => `
+    <button class="category ${category === selectedCategory ? "active" : ""}"
+      data-category="${escapeHTML(category)}">
+      ${escapeHTML(category)}
+    </button>
+  `).join("");
+
+  const headerNav = document.getElementById("headerCategoryNav");
+  const allCategories = [...new Set([
+    ...curatedCategories,
+    ...allResources().map(item => item.category)
+  ])].sort();
+
+  headerNav.innerHTML = `<option value="">Browse category…</option>` +
+    allCategories.map(category => `
+      <option value="${escapeHTML(category)}">${escapeHTML(category)}</option>
+    `).join("");
+
+  headerNav.value = currentRouteCategory() || "";
+}
+
+function render() {
+  renderCategories();
+
+  const searchTerm = document.getElementById("search").value
+    .toLowerCase()
+    .trim();
+
+  const sortType = document.getElementById("sort").value;
+
+  let resources = allResources().filter(resource => {
+    const searchableText = [
+      resource.name,
+      resource.url,
+      resource.category,
+      resource.subcategory,
+      resource.description,
+      resource.tags
+    ].join(" ").toLowerCase();
+
+    const matchesSearch =
+      !searchTerm || searchableText.includes(searchTerm);
+
+    const matchesCategory =
+      selectedCategory === "All" ||
+      resource.category === selectedCategory;
+
+    const matchesFavorite =
+      !showFavorites ||
+      favorites.has(resourceId(resource));
+
+    return matchesSearch && matchesCategory && matchesFavorite;
+  });
+
+  resources.sort((a, b) => {
+    if (sortType === "category") {
+      return `${a.category}${a.name}`.localeCompare(`${b.category}${b.name}`);
+    }
+
+    if (sortType === "newest") {
+      return (b.addedAt || 0) - (a.addedAt || 0);
+    }
+
+    return a.name.localeCompare(b.name);
+  });
+
+  document.getElementById("status").textContent =
+    `${resources.length} shown · ${allResources().length} total resources`;
+
+  const grid = document.getElementById("resourceGrid");
+
+  if (!resources.length) {
+    grid.innerHTML = `
+      <div class="empty">
+        <h3>No resources found</h3>
+        <p>Try another search or clear the filters.</p>
+        <button class="btn" onclick="clearFilters()">Clear filters</button>
+      </div>
+    `;
+    return;
+  }
+
+  grid.innerHTML = resources.map(resource => {
+    const id = resourceId(resource);
+    const favorite = favorites.has(id);
+
+    return `
+      <article class="card">
+        <div class="card-heading">
+          <button class="card-name-link" data-open-resource="${escapeHTML(id)}">
+            <h2>${escapeHTML(resource.name)}</h2>
+            <span class="card-url">${escapeHTML(displayURL(resource.url))}</span>
+          </button>
+          <button class="favorite ${favorite ? "active" : ""}"
+            title="Toggle favorite"
+            data-favorite="${escapeHTML(id)}">
+            ${favorite ? "★" : "☆"}
+          </button>
+        </div>
+
+        <div class="badges">
+          <span class="badge">${escapeHTML(resource.category)}</span>
+          <span class="badge">${escapeHTML(resource.subcategory)}</span>
+        </div>
+
+        <p class="description">${escapeHTML(resource.description)}</p>
+        <div class="tags">${escapeHTML(resource.tags)}</div>
+
+        <div class="card-actions">
+          <a class="visit"
+            href="${escapeHTML(resource.url)}"
+            target="_blank"
+            rel="noopener noreferrer">
+            Visit website ↗
+          </a>
+          <button class="copy" data-copy="${escapeHTML(resource.url)}">
+            Copy
+          </button>
+        </div>
+      </article>
+    `;
+  }).join("");
+}
+
+function clearFilters() {
+  document.getElementById("search").value = "";
+  selectedCategory = "All";
+  showFavorites = false;
+  document.getElementById("favoritesButton").textContent = "☆ Favorites";
+  render();
+}
+
+function openResourceDialog(presetCategory) {
+  const dialog = document.getElementById("resourceDialog");
+  dialog.showModal();
+
+  if (presetCategory) {
+    const select = document.querySelector('#resourceForm select[name="category"]');
+    const hasOption = [...select.options].some(option => option.value === presetCategory);
+    if (hasOption) select.value = presetCategory;
+  }
+}
+
+const POLICY_UPDATED = "July 26, 2026";
+
+const PRIVACY_HTML = `
+  <h1>Privacy Policy</h1>
+  <p class="updated">Last updated: ${POLICY_UPDATED}</p>
+
+  <h2>What we store</h2>
+  <p>
+    This site has no server or account system. When you add a resource
+    or a usage note, it is saved only in your own browser's local
+    storage — we never receive it, and other visitors do not see it
+    unless the site owner separately adds it to the page for everyone.
+    We do not knowingly collect names, email addresses, or other
+    personal identifiers through the add-resource form.
+  </p>
+
+  <h2>Local, browser-only data</h2>
+  <p>
+    Added resources, usage notes, your favorites, and your theme
+    preference (light or dark) are all stored only in your own
+    browser's local storage. They are never sent to us, and clearing
+    your browser data removes them.
+  </p>
+
+  <h2>Bot protection</h2>
+  <p>
+    The add-resource form may use a spam check (reCAPTCHA). Completing
+    that check involves Google processing some technical data under
+    its own privacy policy.
+  </p>
+
+  <h2>Advertising</h2>
+  <p>
+    This site may display ads served by Google AdSense. Google may use
+    cookies or similar technology to serve ads based on your visits to
+    this and other websites. You can review or adjust your ad settings
+    through Google's own account tools.
+  </p>
+
+  <h2>Third-party links</h2>
+  <p>
+    Every entry in this directory links to an independent, third-party
+    website. We do not control those sites and are not responsible for
+    their content, privacy practices, or terms. Review each site
+    yourself before using it.
+  </p>
+
+  <h2>Changes</h2>
+  <p>
+    This policy may be updated as the site changes. Continued use after
+    an update means you accept the revised policy.
+  </p>
+`;
+
+const TERMS_HTML = `
+  <h1>Terms &amp; Conditions</h1>
+  <p class="updated">Last updated: ${POLICY_UPDATED}</p>
+
+  <h2>Using this directory</h2>
+  <p>
+    This site is an independent, community-editable directory of
+    external websites. It is provided as-is, without warranty, and
+    without guarantee that listed sites remain free, safe, or online.
+  </p>
+
+  <h2>Adding a resource</h2>
+  <p>
+    By submitting a resource you confirm that: it is a real, working
+    link you believe is useful; you are not submitting spam,
+    malware, phishing links, or content that is illegal, infringing,
+    or intended to harm others; and you will not attempt to bypass the
+    bot-protection or submission limits on this form.
+  </p>
+
+  <h2>Moderation</h2>
+  <p>
+    We may remove any submitted entry at any time, for any reason,
+    without notice, including entries that are inaccurate, abusive,
+    unsafe, or violate these terms.
+  </p>
+
+  <h2>No endorsement</h2>
+  <p>
+    Listing a website here is not an endorsement of that website by us.
+    Visiting any linked site is at your own risk and subject to that
+    site's own terms and privacy policy.
+  </p>
+
+  <h2>Changes</h2>
+  <p>
+    These terms may change as the site evolves. Continuing to use the
+    site, or submitting new resources, means you accept the current
+    version of these terms.
+  </p>
+`;
+
+async function renderResourcePage(id) {
+  const container = document.getElementById("resourcePageContent");
+  const resource = allResources().find(item => resourceId(item) === id);
+
+  if (!resource) {
+    container.innerHTML = `
+      <h1>Resource not found</h1>
+      <p>This resource may have been removed. <a href="#/">Back to the directory</a>.</p>
+    `;
+    return;
+  }
+
+  container.innerHTML = `
+    <div class="resource-header">
+      <h1>${escapeHTML(resource.name)}</h1>
+      <a class="btn btn-primary" href="${escapeHTML(resource.url)}" target="_blank" rel="noopener noreferrer">
+        Visit website ↗
+      </a>
+    </div>
+    <span class="card-url">${escapeHTML(displayURL(resource.url))}</span>
+
+    <div class="badges" style="margin-top:14px;">
+      <span class="badge">${escapeHTML(resource.category)}</span>
+      <span class="badge">${escapeHTML(resource.subcategory)}</span>
+    </div>
+
+    <p class="resource-description">${escapeHTML(resource.description)}</p>
+
+    <div class="notes-section">
+      <h2>How to use this website</h2>
+      <p class="hint">Notes here are shared with every visitor — add tips, gotchas, or step-by-step pointers for others.</p>
+
+      <form id="noteForm" class="note-form">
+        <textarea name="note" maxlength="600" required
+          placeholder="Example: Sign up with the free plan, then go to Settings → Export to download your files."></textarea>
+
+        <!-- Honeypot -->
+        <input name="website" tabindex="-1" autocomplete="off"
+          style="position:absolute; left:-9999px;" aria-hidden="true">
+
+        <button type="submit" class="btn btn-primary" style="align-self:flex-start;">Add note</button>
+      </form>
+
+      <div id="noteList" class="note-list">
+        <p class="note-empty">Loading notes…</p>
+      </div>
+    </div>
+  `;
+
+  document.getElementById("noteForm").addEventListener("submit", async event => {
+    event.preventDefault();
+
+    const formData = new FormData(event.currentTarget);
+
+    if (formData.get("website")) return;
+
+    const noteText = formData.get("note").trim();
+    if (!noteText) return;
+
+    const submitButton = event.currentTarget.querySelector('button[type="submit"]');
+    submitButton.disabled = true;
+    submitButton.textContent = "Adding...";
+
+    const success = await addNote(id, noteText);
+
+    submitButton.disabled = false;
+    submitButton.textContent = "Add note";
+
+    if (!success) return;
+
+    event.currentTarget.reset();
+    renderNoteList(id);
+  });
+
+  renderNoteList(id);
+}
+
+async function renderNoteList(id) {
+  const listEl = document.getElementById("noteList");
+  if (!listEl) return;
+
+  const notes = await fetchNotes(id);
+
+  if (!listEl.isConnected) return;
+
+  if (!notes.length) {
+    listEl.innerHTML = `<p class="note-empty">No notes yet. Be the first to share how to use this site.</p>`;
+    return;
+  }
+
+  listEl.innerHTML = notes.map(entry => `
+    <div class="note-item">
+      ${escapeHTML(entry.note)}
+      <span class="note-meta">${new Date(entry.createdAt).toLocaleDateString()}</span>
+    </div>
+  `).join("");
+}
+
+function currentRouteCategory() {
+  const match = location.hash.match(/^#\/category\/(.+)$/);
+  return match ? decodeURIComponent(match[1]) : null;
+}
+
+function currentRouteResourceId() {
+  const match = location.hash.match(/^#\/resource\/(.+)$/);
+  return match ? decodeURIComponent(match[1]) : null;
+}
+
+function currentStaticPage() {
+  if (location.hash === "#/privacy") return "privacy";
+  if (location.hash === "#/terms") return "terms";
+  return null;
+}
+
+function applyRoute() {
+  const routeCategory = currentRouteCategory();
+  const staticPage = currentStaticPage();
+  const routeResourceId = currentRouteResourceId();
+
+  const hero = document.querySelector(".hero");
+  const tiles = document.getElementById("categoryTiles");
+  const categoryChips = document.getElementById("categories");
+  const categoryHeader = document.getElementById("categoryHeader");
+  const staticPageSection = document.getElementById("staticPage");
+  const resourcePageSection = document.getElementById("resourcePage");
+  const toolbar = document.querySelector(".toolbar");
+  const status = document.getElementById("status");
+  const grid = document.getElementById("resourceGrid");
+
+  if (staticPage) {
+    hero.hidden = true;
+    tiles.hidden = true;
+    categoryChips.hidden = true;
+    categoryHeader.hidden = true;
+    toolbar.hidden = true;
+    status.hidden = true;
+    grid.hidden = true;
+    resourcePageSection.hidden = true;
+    staticPageSection.hidden = false;
+
+    document.getElementById("staticPageContent").innerHTML =
+      staticPage === "privacy" ? PRIVACY_HTML : TERMS_HTML;
+
+    window.scrollTo(0, 0);
+    return;
+  }
+
+  if (routeResourceId) {
+    hero.hidden = true;
+    tiles.hidden = true;
+    categoryChips.hidden = true;
+    categoryHeader.hidden = true;
+    toolbar.hidden = true;
+    status.hidden = true;
+    grid.hidden = true;
+    staticPageSection.hidden = true;
+    resourcePageSection.hidden = false;
+
+    renderResourcePage(routeResourceId);
+
+    window.scrollTo(0, 0);
+    return;
+  }
+
+  staticPageSection.hidden = true;
+  resourcePageSection.hidden = true;
+  toolbar.hidden = false;
+  status.hidden = false;
+  grid.hidden = false;
+
+  if (routeCategory) {
+    hero.hidden = true;
+    tiles.hidden = true;
+    categoryChips.hidden = true;
+    categoryHeader.hidden = false;
+    document.getElementById("categoryHeaderTitle").textContent = routeCategory;
+    selectedCategory = routeCategory;
+    showFavorites = false;
+  } else {
+    hero.hidden = false;
+    tiles.hidden = false;
+    categoryChips.hidden = false;
+    categoryHeader.hidden = true;
+    selectedCategory = "All";
+  }
+
+  render();
+}
+
+window.addEventListener("hashchange", applyRoute);
+
+document.getElementById("categoryAddButton").addEventListener("click", () => {
+  openResourceDialog(currentRouteCategory());
+});
+
+document.getElementById("search").addEventListener("input", render);
+document.getElementById("sort").addEventListener("change", render);
+
+document.getElementById("categories").addEventListener("click", event => {
+  const categoryButton = event.target.closest("[data-category]");
+  if (!categoryButton) return;
+
+  selectedCategory = categoryButton.dataset.category;
+  render();
+});
+
+document.getElementById("resourceGrid").addEventListener("click", async event => {
+  const favoriteButton = event.target.closest("[data-favorite]");
+  const copyButton = event.target.closest("[data-copy]");
+  const openResourceButton = event.target.closest("[data-open-resource]");
+
+  if (openResourceButton) {
+    location.hash = `#/resource/${encodeURIComponent(openResourceButton.dataset.openResource)}`;
+    return;
+  }
+
+  if (favoriteButton) {
+    const id = favoriteButton.dataset.favorite;
+
+    if (favorites.has(id)) {
+      favorites.delete(id);
+    } else {
+      favorites.add(id);
+    }
+
+    saveData();
+    render();
+  }
+
+  if (copyButton) {
+    try {
+      await navigator.clipboard.writeText(copyButton.dataset.copy);
+      const oldText = copyButton.textContent;
+      copyButton.textContent = "Copied";
+      setTimeout(() => copyButton.textContent = oldText, 1200);
+    } catch {
+      alert("Copy failed. Copy the URL manually.");
+    }
+  }
+});
+
+document.getElementById("favoritesButton").addEventListener("click", event => {
+  showFavorites = !showFavorites;
+  event.currentTarget.textContent =
+    showFavorites ? "★ Showing favorites" : "☆ Favorites";
+  render();
+});
+
+const menuToggle = document.getElementById("menuToggle");
+const navMenu = document.getElementById("navMenu");
+
+function closeMenu() {
+  navMenu.hidden = true;
+  menuToggle.setAttribute("aria-expanded", "false");
+}
+
+function openMenu() {
+  navMenu.hidden = false;
+  menuToggle.setAttribute("aria-expanded", "true");
+}
+
+menuToggle.addEventListener("click", () => {
+  if (navMenu.hidden) {
+    openMenu();
+  } else {
+    closeMenu();
+  }
+});
+
+document.addEventListener("click", event => {
+  if (navMenu.hidden) return;
+  if (event.target === menuToggle || menuToggle.contains(event.target)) return;
+  if (navMenu.contains(event.target)) return;
+  closeMenu();
+});
+
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape") closeMenu();
+});
+
+document.getElementById("headerCategoryNav").addEventListener("change", event => {
+  const value = event.currentTarget.value;
+  location.hash = value ? `#/category/${encodeURIComponent(value)}` : "#/";
+  closeMenu();
+});
+
+document.getElementById("themeButton").addEventListener("click", () => {
+  const currentTheme =
+    document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+
+  document.documentElement.dataset.theme = currentTheme;
+  localStorage.setItem("freebee-theme", currentTheme);
+  closeMenu();
+});
+
+document.getElementById("printButton").addEventListener("click", () => {
+  window.print();
+  closeMenu();
+});
+
+document.getElementById("addButton").addEventListener("click", () => {
+  openResourceDialog();
+  closeMenu();
+});
+document.getElementById("heroAddButton").addEventListener("click", openResourceDialog);
+
+document.getElementById("cancelButton").addEventListener("click", () => {
+  document.getElementById("resourceDialog").close();
+});
+
+document.getElementById("resourceForm").addEventListener("submit", async event => {
+  event.preventDefault();
+
+  const formData = new FormData(event.currentTarget);
+
+  // Honeypot: real visitors never see or fill this field. If it has a
+  // value, silently drop the submission instead of telling the bot why.
+  if (formData.get("website")) {
+    return;
+  }
+
+  if (captchaEnabled) {
+    const captchaResponse = grecaptcha.getResponse(captchaWidgetId);
+
+    if (!captchaResponse) {
+      alert("Please complete the \"I'm not a robot\" check before submitting.");
+      return;
+    }
+  }
+
+  const rawURL = formData.get("url").trim();
+
+  try {
+    const parsedURL = new URL(rawURL);
+
+    if (!["http:", "https:"].includes(parsedURL.protocol)) {
+      throw new Error();
+    }
+  } catch {
+    alert("Please enter a valid http:// or https:// URL.");
+    return;
+  }
+
+  const duplicate = allResources().some(item =>
+    item.url.toLowerCase() === rawURL.toLowerCase()
+  );
+
+  if (duplicate) {
+    alert("That URL is already in the directory.");
+    return;
+  }
+
+  const submitButton = event.currentTarget.querySelector('button[type="submit"]');
+  submitButton.disabled = true;
+  submitButton.textContent = "Fetching site info...";
+
+  const metadata = await fetchLinkMetadata(rawURL);
+
+  const resource = {
+    id: Date.now() + "-" + Math.random().toString(36).slice(2),
+    name: metadata.name,
+    url: rawURL,
+    category: formData.get("category"),
+    subcategory: "User added",
+    description: metadata.description || "User-added resource.",
+    tags: formData.get("tags").trim() || "user added",
+    addedAt: Date.now()
+  };
+
+  submitButton.textContent = "Adding...";
+
+  const success = addResource(resource);
+
+  submitButton.disabled = false;
+  submitButton.textContent = "Add resource";
+
+  if (captchaEnabled) {
+    grecaptcha.reset(captchaWidgetId);
+  }
+
+  if (!success) return;
+
+  event.currentTarget.reset();
+  document.getElementById("resourceDialog").close();
+
+  selectedCategory = resource.category;
+  render();
+});
+
+document.getElementById("exportButton").addEventListener("click", () => {
+  const file = new Blob(
+    [JSON.stringify(allResources(), null, 2)],
+    { type: "application/json" }
+  );
+
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(file);
+  link.download = "freebee-resources.json";
+  link.click();
+
+  URL.revokeObjectURL(link.href);
+});
+
+document.getElementById("importInput").addEventListener("change", event => {
+  const file = event.target.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+
+  reader.onload = async () => {
+    try {
+      const imported = JSON.parse(reader.result);
+
+      if (!Array.isArray(imported)) {
+        throw new Error();
+      }
+
+      const existingURLs = new Set(
+        allResources().map(item => item.url.toLowerCase())
+      );
+
+      const validItems = imported.filter(item =>
+        item.name &&
+        item.url &&
+        /^https?:\/\//i.test(item.url) &&
+        !existingURLs.has(item.url.toLowerCase())
+      ).map(item => ({
+        id: item.id || Date.now() + "-" + Math.random().toString(36).slice(2),
+        name: item.name,
+        url: item.url,
+        category: item.category || "Other",
+        subcategory: item.subcategory || "Imported",
+        description: item.description || "Imported resource.",
+        tags: item.tags || "imported",
+        addedAt: item.addedAt || Date.now()
+      }));
+
+      for (const item of validItems) {
+        addResource(item);
+      }
+
+      render();
+
+      alert(`${validItems.length} resource(s) imported.`);
+    } catch {
+      alert("Invalid JSON file.");
+    }
+
+    event.target.value = "";
+  };
+
+  reader.readAsText(file);
+});
+
+const savedTheme = localStorage.getItem("freebee-theme") || "light";
+document.documentElement.dataset.theme = savedTheme;
+
+const footerYearEl = document.getElementById("footerYear");
+if (footerYearEl) footerYearEl.textContent = new Date().getFullYear();
+
+applyRoute();
+
+try {
+  (window.adsbygoogle = window.adsbygoogle || []).push({});
+} catch (error) {
+  // AdSense not configured yet (publisher ID still a placeholder) — ignore.
+}
+</script>
+
+</body>
+</html>
